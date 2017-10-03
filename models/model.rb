@@ -8,7 +8,7 @@ Octokit.configure do |c|
 end
 
 class Pr
-    attr_accessor :username, :sha, :status, :timestamp
+    attr_accessor :username, :sha, :url, :status, :timestamp
     
     @@all = []
     
@@ -16,9 +16,10 @@ class Pr
         @@all
     end
     
-    def initialize(username,sha)
+    def initialize(username,sha,url)
         @username = username
         @sha = sha
+        @url = "#{url}/files"
         @@all << self
     end
 end
@@ -32,20 +33,15 @@ def get_prs(name_repo)
     prs = Octokit.pull_requests(name_repo,:state => 'open')
     
     prs.each do |pr_element|
-        Pr.new(pr_element.user.login,pr_element.head.sha)
+        Pr.new(pr_element.user.login,pr_element.head.sha,pr_element.html_url)
     end
 end
 
 def get_info(pr,name_repo,sha)
-    # Octokit.statuses(name_repo,sha).first.state
     update = Octokit.statuses(name_repo,sha).first
     pr.status = update.state
     pr.timestamp = update.created_at
 end
-
-# def get_timestamp(name_repo,sha)
-    # Octokit.statuses(name_repo,sha).first.created_at
-# end
 
 user_repo_url = "https://github.com/bmuellerhstat/01-methods-parameters-lab"
 user_name = "bmuellerhstat"
@@ -55,5 +51,5 @@ user_name_repo = "#{user_name}/#{user_repo}"
 get_prs(user_name_repo)
 Pr.all.each do |pr|
     get_info(pr,user_name_repo,pr.sha)
-    puts "#{pr.username}: #{pr.status}: #{pr.timestamp}"
+    puts "#{pr.username}; #{pr.status}; #{pr.timestamp}; #{pr.url}"
 end
