@@ -18,6 +18,20 @@ class ApplicationController < Sinatra::Base
         get_info(pr,user_name_repo,pr.sha)
     end
     
+    Student.all.sort_by{|student| student.first}
+    
+    Student.all.each do |student|
+      matching_pr = Pr.all.find{|pr| pr.username == student.username}
+      unless matching_pr.nil?
+        student.sha = matching_pr.sha
+        student.url = matching_pr.url
+        student.status = matching_pr.status
+        student.timestamp = matching_pr.timestamp
+      end
+    end
+    
+    Student.all.sort_by{|student| student.last}
+    
     
     
     erb :index

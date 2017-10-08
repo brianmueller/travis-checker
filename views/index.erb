@@ -19,8 +19,8 @@
     
     <div class="container">
       <h1>Hello World!</h1>
-      <% Pr.all.each do |pr| %>
-          <p><a href=<%= pr.url %>><%= "#{pr.username}; #{pr.status}; #{pr.timestamp}"%></a></p>
+      <% Student.all.each do |student| %>
+          <p><a href=<%= student.url %>><%= "#{student.username}; #{student.status}; #{student.timestamp}"%></a></p>
       <% end %>
     </div>
     

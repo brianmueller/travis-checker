@@ -43,3 +43,46 @@ def get_info(pr,name_repo,sha)
     pr.timestamp = update.created_at
 end
 
+
+
+class Student
+  attr_accessor :username, :sha, :url, :status, :timestamp, :first, :last
+  
+  @@all = []
+    
+    def self.all
+        @@all
+    end
+    
+    def initialize(first,last,username)
+        @first = first
+        @last = last
+        @username = username
+        # @status = false
+        @@all << self
+    end
+end
+
+Student.new("Amr","Almaz","amra0760")
+Student.new("Dakarai","Arnold","dakaraia6799")
+Student.new("Leocadio","Bonilla","leocadiob7576")
+Student.new("Xinyan","Chen","xinyanc3694")
+Student.new("Zele","Dong","zeled3813")
+Student.new("Simeon","Karakatsiotis","simiek")
+Student.new("Abdelmonem Moam","Khedr","abdelk7344")
+Student.new("David","Kim","davidk7680")
+Student.new("Bianna","Krubitski","biannak6288")
+Student.new("Zhi Yin","Lai","zhiyinl5633")
+Student.new("Geoffrey","Lam","geoffreyl4412")
+Student.new("Andre","Lara","andrel6392")
+Student.new("Christy","Li","christy8059")
+Student.new("Gabriel","Makower","gabrielm1571")
+Student.new("Brittany","Misacango","brittanym3578")
+Student.new("Cheyenne","Nicaisse","cheyennen0503")
+Student.new("Alvin","Nieves","nievesalvin")
+Student.new("Ricardo","Penacastro","ricardop2476")
+Student.new("Shifa","Quddus","shifaq2337")
+Student.new("Kathleen","Saloma","kathleens0782")
+Student.new("Stephen","Wang","stephenw6888")
+Student.new("Kelly","Xiong Chen","kellyx1636")
+Student.new("David","Xiquevaldetano","davidx4697")
