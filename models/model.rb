@@ -3,8 +3,8 @@ require 'open-uri'
 require 'json'
 
 Octokit.configure do |c|
-  c.login = 'bmuellerhstat'
-  c.password = ''
+  c.login = ENV["LOGIN"]
+  c.password = ENV["PASSWORD"]
 end
 
 class Pr
@@ -43,13 +43,3 @@ def get_info(pr,name_repo,sha)
     pr.timestamp = update.created_at
 end
 
-user_repo_url = "https://github.com/bmuellerhstat/01-methods-parameters-lab"
-user_name = "bmuellerhstat"
-user_repo = get_repo_name(user_repo_url)
-user_name_repo = "#{user_name}/#{user_repo}"
-
-get_prs(user_name_repo)
-Pr.all.each do |pr|
-    get_info(pr,user_name_repo,pr.sha)
-    puts "#{pr.username}; #{pr.status}; #{pr.timestamp}; #{pr.url}"
-end

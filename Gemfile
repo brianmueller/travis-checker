@@ -4,4 +4,4 @@ gem 'pry'
 gem 'sinatra'
 gem 'shotgun'
 gem 'dotenv'
-gem 'github_api'
+gem "octokit", "~> 4.0"

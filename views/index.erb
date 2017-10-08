@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>title</title>
+    <title>Travis Checker</title>
     <!-- bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <!-- bootstrap JS -->
@@ -17,9 +17,14 @@
   </head>
   <body>
     
-    <div class="container-fluid">
+    <div class="container">
       <h1>Hello World!</h1>
+      <% Pr.all.each do |pr| %>
+          <p><a href=<%= pr.url %>><%= "#{pr.username}; #{pr.status}; #{pr.timestamp}"%></a></p>
+      <% end %>
     </div>
+    
+
     
   </body>
 </html>
