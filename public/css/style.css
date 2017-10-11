@@ -1,1 +1,33 @@
-.selected{ background-color: #ace; }
+#grades {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+}
+
+.btn:visited {
+    background-color: #333333;
+    color: white;
+}
+
+.btn:hover {
+    background-color: #cecece;
+    color: #3333;
+}
+
+.btn:active {
+    background-color: #333333;
+    color: white;
+}
+
+.btn:focus {
+    background-color: #333333;
+    color: white;
+}
+
+.red {
+    color: red;
+}
+
+.green {
+    color: green;
+}
