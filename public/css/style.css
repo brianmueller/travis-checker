@@ -4,6 +4,10 @@
     left: -9999px;
 }
 
+.btn {
+    font-family: "";
+}
+
 .btn:visited {
     background-color: #333333;
     color: white;

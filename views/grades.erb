@@ -21,13 +21,14 @@
     
     <div class="container">
       <h1><a href="/">bmuellerhstat</a> / <%= @repo %></h1>
+      <input id="datePicker" type="datetime-local"> <button class="btn" id="detectLatenesses">Detect Latenesses</button>
       <table class="table">
         <thead>
           <tr>
             <th>Username</th>
             <th>Status</th>
             <th>Timestamp</th>
-            <th><span id="reset">Grade</span> <button id="copy" class="btn" data-clipboard-target="#grades">copy</button></th>
+            <th><span id="reset">Grade</span> <button id="copy" class="btn" data-clipboard-target="#grades">COPY</button></th>
           </tr>
         </thead>
         <tbody>
@@ -35,9 +36,8 @@
             <tr>
               <td><%= student.username %></td>
               <td>
-                
                 <a href=<%= student.url %> target="_blank" style="color:<%= student.status == "success" ? "green" : "red"  %>" id="student<%= i %>status" class="status"><%= student.status %></a></td>
-              <td><%= student.timestamp %></td>
+              <td><span id="student<%= i %>time" class="time"><%= student.timestamp %></span></td>
               <td><span id="student<%= i %>grade" class="grade"></span></td>
             </tr>
           <% end %>
@@ -46,12 +46,7 @@
       
     </div>
     
-    <p id="grades">
-        10<br> 5
-        <br> 0
-        <br> 10
-        <br>
-    </p>
+    <p id="grades"></p>
     
   </body>
 </html>

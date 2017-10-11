@@ -1,5 +1,5 @@
 $(function() {
-    var clipboard = new Clipboard('.btn');
+    var clipboard = new Clipboard('#copy');
 
     clipboard.on('success', function(e) {
         console.info('Action:', e.action);
@@ -15,12 +15,45 @@ $(function() {
     });
 
     $('#copy').click(function() {
-        $(this).html("Copied!");
+        $(this).html("DONE");
     });
     $('#copy').blur(function() {
-        $(this).html("Copy");
+        $(this).html("COPY");
     });
 
+    function datePickerNow() {
+        var now = new Date();
+        $('#datePicker').val(now.getFullYear() + "-" + ("0" + (now.getMonth() + 1)).slice(-2) + "-" + ("0" + now.getDate()).slice(-2) + "T" + now.getHours() + ":" + now.getMinutes());
+    }
+    datePickerNow();
+
+    function convertToLocal() {
+        var times = document.getElementsByClassName("time");
+        for (var i = 0; i < times.length; i++) {
+            var localDate = new Date($('#student' + i + 'time').text()).toString();
+            if (localDate != "Invalid Date") {
+                $('#student' + i + 'time').text(localDate);
+            }
+        }
+    }
+    convertToLocal();
+
+    function detectLatenesses(deadline) {
+        var times = document.getElementsByClassName("time");
+        for (var i = 0; i < times.length; i++) {
+            if (Date.parse($('#student' + i + 'time').text()) > deadline) {
+                $('#student' + i + 'time').css("color", "red");
+                $('#student' + i + 'grade').text(parseInt($('#student' + i + 'grade').text()) / 2);
+            }
+            else {
+                $('#student' + i + 'time').css("color", "black");
+            }
+        }
+    }
+
+    $('#detectLatenesses').click(function() {
+        detectLatenesses(Date.parse($('#datePicker').val()));
+    });
 
     function updateGrades() {
         var statuses = document.getElementsByClassName("status");
@@ -42,10 +75,9 @@ $(function() {
         $('#grades').html("");
         var grades = document.getElementsByClassName("grade");
         for (var i = 0; i < grades.length; i++) {
-            $('#grades').append($('#student' + i + 'grade').text()+"<br>");
+            $('#grades').append($('#student' + i + 'grade').text() + "<br>");
         }
     }
-
 
     updateGrades();
     transferGrades();
@@ -61,7 +93,5 @@ $(function() {
             updateGrades();
             transferGrades();
         });
-
-
 
 });
