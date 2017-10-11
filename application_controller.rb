@@ -18,9 +18,9 @@ class ApplicationController < Sinatra::Base
   
   get "/:repo" do
     @repo = params[:repo]
-    user_repo_url = "https://github.com/bmuellerhstat/#{@repo}"
+    @user_repo_url = "https://github.com/bmuellerhstat/#{@repo}"
     user_name = "bmuellerhstat"
-    user_repo = get_repo_name(user_repo_url)
+    user_repo = get_repo_name(@user_repo_url)
     user_name_repo = "#{user_name}/#{user_repo}"
     
     get_prs(user_name_repo)
