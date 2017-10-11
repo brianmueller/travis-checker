@@ -7,6 +7,8 @@ Octokit.configure do |c|
   c.password = ENV["PASSWORD"]
 end
 
+
+
 class Pr
     attr_accessor :username, :sha, :url, :status, :timestamp
     

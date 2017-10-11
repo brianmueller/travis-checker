@@ -18,9 +18,10 @@
   <body>
     
     <div class="container">
-      <h1>Hello World!</h1>
-      <% Student.all.each do |student| %>
-          <p><a href=<%= student.url %>><%= "#{student.username}; #{student.status}; #{student.timestamp}"%></a></p>
+      <h1>Repos</h1>
+      <% @user_repos_array.each do |repo| %>
+          
+          <p><a href=<%= repo %>><%= repo %></a></p>
       <% end %>
     </div>
     
