@@ -7,6 +7,7 @@ require_relative 'models/model.rb'
 class ApplicationController < Sinatra::Base
 
   get '/' do
+    Octokit.auto_paginate = true
     user_repos = Octokit.repositories("bmuellerhstat")
     @user_repos_array = []
     user_repos.each do |repo|
@@ -42,9 +43,23 @@ class ApplicationController < Sinatra::Base
     
     Student.all.sort_by{|student| student.last}
     
-    
+    erb :grades
+  end
+  
+  get "/:repo/close" do
+    @repo = params[:repo]
+    @user_repo_url = "https://github.com/bmuellerhstat/#{@repo}"
+    user_name = "bmuellerhstat"
+    user_repo = get_repo_name(@user_repo_url)
+    user_name_repo = "#{user_name}/#{user_repo}"
+    get_prs(user_name_repo)
+    close_prs(user_name_repo)
     
     erb :grades
+  end
+  
+  get "/binding/pry" do
+    binding.pry
   end
   
 end

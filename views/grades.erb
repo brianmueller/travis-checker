@@ -21,6 +21,7 @@
     
     <div class="container">
       <h1><a href="/">bmuellerhstat</a> / <a href=<%= "#{@user_repo_url}/pulls" %> target="_blank"><%= @repo %></a></h1>
+      <h6><a href=<%= "#{@repo}/close" %>>Close All Pull Requests</a></h6>
       <input id="datePicker" type="datetime-local"> <button class="btn" id="detectLatenesses">Detect Latenesses</button>
       <table class="table">
         <thead>

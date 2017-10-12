@@ -18,11 +18,16 @@ class Pr
         @@all
     end
     
-    def initialize(username,sha,url)
+    def initialize(username,sha,url,num)
         @username = username
         @sha = sha
         @url = "#{url}/files"
+        @num = num
         @@all << self
+    end
+    
+    def close(name_repo)
+        Octokit.close_pull_request(name_repo,@num)
     end
 end
 
@@ -35,7 +40,13 @@ def get_prs(name_repo)
     prs = Octokit.pull_requests(name_repo,:state => 'open')
     
     prs.each do |pr_element|
-        Pr.new(pr_element.user.login,pr_element.head.sha,pr_element.html_url)
+        Pr.new(pr_element.user.login,pr_element.head.sha,pr_element.html_url,pr_element.number)
+    end
+end
+
+def close_prs(name_repo)
+    Pr.all.each do |pr|
+        pr.close(name_repo)
     end
 end
 
@@ -44,7 +55,6 @@ def get_info(pr,name_repo,sha)
     pr.status = update.state
     pr.timestamp = update.created_at
 end
-
 
 
 class Student
