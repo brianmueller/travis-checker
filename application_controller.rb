@@ -55,7 +55,7 @@ class ApplicationController < Sinatra::Base
     get_prs(user_name_repo)
     close_prs(user_name_repo)
     
-    erb :grades
+    redirect '/'
   end
   
   get "/binding/pry" do
