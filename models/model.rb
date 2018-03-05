@@ -52,6 +52,7 @@ end
 
 def get_info(pr,name_repo,sha)
     update = Octokit.statuses(name_repo,sha).first
+    puts "pr: #{pr}; name_repo: #{name_repo}; sha: #{sha}"
     pr.status = update.state
     pr.timestamp = update.created_at
 end
