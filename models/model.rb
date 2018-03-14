@@ -77,7 +77,7 @@ class Student
 end
 
 Student.new("Amr","Almaz","amra0760")
-Student.new("Dakarai","Arnold","dakaraia6799")
+Student.new("Dakarai","Arnold","Dakaraia6799")
 Student.new("Leocadio","Bonilla","leocadiob7576")
 Student.new("Xinyan","Chen","xinyanc3694")
 Student.new("Zele","Dong","zeled3813")
