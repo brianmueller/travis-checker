@@ -99,8 +99,8 @@ Student.new("Amanda","Rivera","amandar8529")
 Student.new("Danny","Wu","dannyw3292")
 Student.new("Johnson","Wu","johnsonw6558")
 Student.new("Xiurong","Yu","xiurongy3506")
-Student.new("Shi","Zheng","shiz3150")
-Student.new("Wei","Zheng","dive0")
+Student.new("Shi","Zheng","dive0")
+Student.new("Wei","Zheng","weiz9762")
 
 # 2018
 # Student.new("Amr","Almaz","amra0760")
