@@ -52,7 +52,8 @@ end
 
 def get_info(pr,name_repo,sha)
     update = Octokit.statuses(name_repo,sha).first
-    puts "pr: #{pr}; name_repo: #{name_repo}; sha: #{sha}"
+    # puts "pr: #{pr}; name_repo: #{name_repo}; sha: #{sha}"
+    puts "update: #{update}; update.state: #{update.state}"
     pr.status = update.state
     pr.timestamp = update.created_at
 end
@@ -77,7 +78,6 @@ class Student
 end
 
 # 2019
-Student.new("Donia","Abdelhalim","doniaa3710")
 Student.new("Mohammed","Amin","mohammeda6429")
 Student.new("Sebastian","Andrade","sebastiana7420")
 Student.new("Anabel","Arbeeny","anabela0701")
